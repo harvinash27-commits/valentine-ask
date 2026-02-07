@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Be My Valentine🤌🏻💛 ?</title>
+  <title>Be My Valentine 💖</title>
   <style>
     body {
       background: #ffdde1;
       font-family: Arial, sans-serif;
       text-align: center;
-      padding-top: 80px;
+      padding-top: 50px;
+      overflow-x: hidden;
     }
     h1 {
       font-size: 40px;
@@ -29,26 +30,66 @@
     .no {
       background: #ccc;
     }
+    img {
+      border-radius: 20px;
+      margin-top: 20px;
+      max-width: 250px;
+    }
+    .heart {
+      position: fixed;
+      font-size: 30px;
+      animation: float 3s linear forwards;
+    }
+    @keyframes float {
+      0% { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(-600px) rotate(360deg); opacity: 0; }
+    }
   </style>
 </head>
 <body>
 
-<h1>Will you be my Valentine? 💘</h1>
+<h1>Will you be my Valentine, yen shellow🤌🏻? 💘</h1>
 
-<button class="yes" onclick="yesClick()">YES 💖</button>
-<button class="no" onclick="moveButton()">NO 😝</button>
+<!-- Your Picture -->
+<img src="myphoto.jpg" alt="Me ❤️">
+
+<!-- Buttons -->
+<div>
+  <button class="yes" onclick="yesClick()">YESSS! 💓👀</button>
+  <button class="no" onclick="moveButton()">NO…😝🗿</button>
+</div>
 
 <script>
+  // YES button
   function yesClick() {
     document.body.innerHTML =
-      "<h1>YAYYY muaaaaaa!!😍💞</h1><p>You just made my day maa…wait for the suprises on 14th feb my cutie piewww ❤️</p>";
+      "<h1>YAYYYY 😍💞</h1>" +
+      "<p>Danks ehhhhh [my cutieeee piewwwww]! 💌</p>" +
+      "<p>I can’t wait for Feb 14 for more surprises I'm gonna give youuuu!! ❤️</p>" +
+      "<img src='1770476536333.jpg' width='250px'>";
+    startHearts();
   }
 
+  // NO button moves around
   function moveButton() {
     const btn = document.querySelector('.no');
     btn.style.position = "absolute";
-    btn.style.left = Math.random() * 80 + "vw";
-    btn.style.top = Math.random() * 80 + "vh";
+    btn.style.left = Math.random() * 90 + "vw";
+    btn.style.top = Math.random() * 90 + "vh";
+    btn.style.transform = `rotate(${Math.random() * 360}deg)`;
+  }
+
+  // Hearts confetti animation
+  function startHearts() {
+    for(let i=0; i<50; i++){
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * window.innerWidth + "px";
+      heart.style.color = ['#ff3366','#ff6699','#ff99cc'][Math.floor(Math.random()*3)];
+      heart.innerHTML = '❤️';
+      document.body.appendChild(heart);
+      setTimeout(()=> heart.remove(), 3000);
+    }
   }
 </script>
 
